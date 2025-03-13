@@ -7,11 +7,15 @@ name = "4daagse"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "beepy" },
     { name = "selenium" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "selenium", specifier = ">=4.29.0" }]
+requires-dist = [
+    { name = "beepy", specifier = ">=1.0.7" },
+    { name = "selenium", specifier = ">=4.29.0" },
+]
 
 [[package]]
 name = "attrs"
@@ -20,6 +24,18 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/5a/b0/1367933a8532ee6ff8d63537de4f1177af4bff9f3e829baf7331f595bb24/attrs-25.3.0.tar.gz", hash = "sha256:75d7cefc7fb576747b2c81b4442d4d4a1ce0900973527c011d1030fd3bf4af1b", size = 812032 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/77/06/bb80f5f86020c4551da315d78b3ab75e8228f89f0162f2c3a819e407941a/attrs-25.3.0-py3-none-any.whl", hash = "sha256:427318ce031701fea540783410126f03899a97ffc6f61596ad581ac2e40e3bc3", size = 63815 },
+]
+
+[[package]]
+name = "beepy"
+version = "1.0.7"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "simpleaudio" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/7e/9b/896d524799ae1147bbd00050948b0cc3b4ca225d70eb034864333824c864/beepy-1.0.7.tar.gz", hash = "sha256:817348ff3cc098aca8d1de7bc15292b762fde20fcc0a020fccea7936940d5b5f", size = 1304126 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7c/48/8f1c161e55677333ba3d5d5d3100a6b2b6c04cf542354e774766ff799b39/beepy-1.0.7-py3-none-any.whl", hash = "sha256:0e6616ad678fcf334e57c00633676ffef0ce1232127855fb2fc62c91e67ddb06", size = 1300908 },
 ]
 
 [[package]]
@@ -108,6 +124,12 @@ sdist = { url = "https://files.pythonhosted.org/packages/1c/ab/09de87ef66a10a7d4
 wheels = [
     { url = "https://files.pythonhosted.org/packages/2f/a6/fc66ea71ec0769f72abdf15cb9ec9269517abe68a160839383ddff7478f1/selenium-4.29.0-py3-none-any.whl", hash = "sha256:ce5d26f1ddc1111641113653af33694c13947dd36c2df09cdd33f554351d372e", size = 9536642 },
 ]
+
+[[package]]
+name = "simpleaudio"
+version = "1.0.4"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/94/1b/4dc29653733202b68c09d9c6ca085cf67ac54859ee860647ef21ac1ff3dc/simpleaudio-1.0.4.tar.gz", hash = "sha256:691c88649243544db717e7edf6a9831df112104e1aefb5f6038a5d071e8cf41d", size = 2042564 }
 
 [[package]]
 name = "sniffio"

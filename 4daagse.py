@@ -5,7 +5,7 @@ from selenium.webdriver.edge.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-import winsound
+import beepy
 
 options = Options()
 options.use_chromium = True
@@ -27,7 +27,7 @@ try:
             ticket_kopen_element = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[self::a or self::button][contains(., 'Ticket kopen')]")))
             print("Tickets are available!")
             ticket_kopen_element.click()
-            winsound.Beep(440, 2000)  # Alert the user
+            beepy.beep # Alert the user
             break  # Break out of the loop after successfully clicking the button
         except TimeoutException:
             print("Tickets are not available at the moment. Checking again...")
