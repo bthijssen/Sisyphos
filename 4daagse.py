@@ -1,20 +1,22 @@
 from selenium import webdriver
-from selenium.webdriver.edge.service import Service
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.edge.options import Options
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 import beepy
+from dotenv import dotenv_values
 
+config = dotenv_values(".env")
+chrome_driver_path = config["CHROME_WEBDRIVER_PATH"] 
 options = Options()
 options.use_chromium = True
-edge_driver_path = r"C:\Users\lsibbald\msedgedriver.exe"
-service = Service(executable_path=edge_driver_path)
-driver = webdriver.Edge(service=service, options=options)
+service = Service(executable_path=chrome_driver_path)
+driver = webdriver.Chrome(service=service, options=options)
 wait = WebDriverWait(driver, 10)  # Adjust timeout as needed
 
-url = "https://atleta.cc/e/zRLhVgiDSdOK/resale"
+url = config["URL"]
 driver.get(url)
 
 try:

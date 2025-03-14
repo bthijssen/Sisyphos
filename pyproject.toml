@@ -6,5 +6,6 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "beepy>=1.0.7",
+    "python-dotenv>=1.0.1",
     "selenium>=4.29.0",
 ]
