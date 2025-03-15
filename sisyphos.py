@@ -31,7 +31,9 @@ class TicketChecker:
         while True:
             try:
                 ticket_kopen_element = self.wait.until(
-                    EC.element_to_be_clickable((By.XPATH, "//*[self::a or self::button][contains(., 'Ticket kopen')]"))
+                    EC.element_to_be_clickable(
+                        (By.XPATH, "//*[self::a or self::button][contains(., 'Ticket kopen') or contains(., 'Buy ticket')]")
+                    )
                 )
                 print("Tickets are available!")
                 ticket_kopen_element.click()
