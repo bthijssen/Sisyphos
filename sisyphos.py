@@ -27,7 +27,7 @@ class TicketChecker:
         """Continuously check for ticket availability and click if available."""
         while True:
             try:
-                wait_time = # randint(10,12)
+                wait_time = randint(10,12)
                 buy_ticket_element = WebDriverWait(self.driver, wait_time).until(
                     # EC.presence_of_element_located((By.XPATH, "//button[contains(text(), 'Buy ticket')]"))
                     EC.element_to_be_clickable(
