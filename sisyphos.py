@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -29,26 +30,27 @@ class TicketChecker:
         """Continuously check for ticket availability and click if available."""
         while True:
             try:
-                wait_time = 13
+                print(datetime.now())
+                wait_time = 15
                 
+                time.sleep(0.5)
                 # Find all buttons with "Reserved" or "Buy ticket"
-                buttons = self.driver.find_elements(By.XPATH, "//button[contains(text(), 'Reserved') or contains(text(), 'Buy ticket')]")
-
-                # Check the text of each button
+                # buttons = self.driver.find_elements(By.XPATH, "//button[contains(text(), 'Reserved') or contains(text(), 'Buy ticket')]")
+                
+                buttons = self.driver.find_elements(By.XPATH, "//button")
                 for index, button in enumerate(buttons):
                     button_text = button.text.strip()
-                    print(f"Button {index + 1}: {button_text}")
+                    print(f"Button {index + 1}: '{button_text}'")  # Debugging output
 
-                    if "Reserved" in button_text:
-                        print(f"Button {index + 1} shows 'Reserved'.")
-                    elif "Buy ticket" in button_text:
-                        print(f"Button {index + 1} shows 'Buy ticket'.")
-                    
+                    if "reserved" in button_text.lower():
+                        print(f"Button {index + 1} is Reserved!")
+                    elif "buy ticket" in button_text.lower():
+                        print(f"Button {index + 1} is a Buy Ticket button!")
+                
                 buy_ticket_element = WebDriverWait(self.driver, wait_time).until(
                     # EC.presence_of_element_located((By.XPATH, "//button[contains(text(), 'Reserved')]"))
                     EC.element_to_be_clickable(
-                        # this only selects the tickets without KWbN membership needed
-                        ((By.XPATH, "//button[contains(text(), 'Buy ticket')]"))
+                        (By.XPATH, "//button[contains(text(), 'Buy ticket')]")
                     )
                 )
                 
