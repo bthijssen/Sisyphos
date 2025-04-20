@@ -12,6 +12,10 @@ import requests
 from random import randint
 from dotenv import dotenv_values
 
+from seleniumbase import Driver
+
+
+
 class TicketChecker:
     def __init__(self, config):
         """Initialize the TicketChecker with a WebDriver and configuration."""
@@ -25,6 +29,12 @@ class TicketChecker:
         """Open the URL in the browser."""
         self.driver.get(self.url)
         self.wait.until(EC.presence_of_element_located((By.XPATH, "//body")))
+        
+    def bypass_cloudflare():
+        driver = Driver(uc=True)
+        url = "https://2captcha.com/demo/cloudflare-turnstile"
+        driver.uc_open_with_reconnect(url, 4)
+        driver.quit()
     
     def check_tickets(self):
         """Continuously check for ticket availability and click if available."""
@@ -76,7 +86,9 @@ class TicketChecker:
         """Run the ticket checker script."""
         try:
             self.open_page()
+            self.bypass_cloudflare()
             self.check_tickets()
+            
         except KeyboardInterrupt:
             print("Script stopped by user.")
         except Exception as e:
